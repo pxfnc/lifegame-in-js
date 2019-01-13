@@ -111,13 +111,13 @@ const arroundLivesCount = (row, column, state, N) => [].concat(
 const arroundLivesCountOnTorus = (row, column, state, N) => [].concat(
     ...[-1, 0, 1].map(
         a => [-1, 0, 1].map(
-            b => [(row + a + N) % N, (column + b + N) % N]
+            b => [(row + a + N) % N, (column + b + N) % N] // modにすることで範囲外のアクセスを防ぐ
         )
-    ) // 数学的に言うと、{-1, 0, 1}^2という集合を作って全ての元にrow, columnのオフセットを足してる。
+    )
 ).filter(
-    ([a, b]) => // そのような数字の組[a, b]から
-        !(a == row && b == column) // aとbの組みが注目してる座標でない
-        && Math.min(a, b) >= 0 // かつ、座標が下限より大きい
-        && Math.max(a, b) < N // かつ、座標が上限より小さい
-        && state[a][b] // かつその座標で生きてるマス
-).length // の長さを取得
+    ([a, b]) =>
+        !(a == row && b == column)
+        && Math.min(a, b) >= 0
+        && Math.max(a, b) < N
+        && state[a][b]
+).length
