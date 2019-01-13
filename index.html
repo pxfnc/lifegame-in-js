@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div class="life-status"></div>
+    <div class="app">
+        <button class="app-start">start</button>
+        <button class="app-stop">stop</button>
+        <button class="app-clear">clear</button>
+        <button class="app-step">step</button>
+        <button class="app-set-random">set random</button>
+        <div class="app-board"></div>
+    </div>
+    <script src='oop.js'></script>
+    <script>
+
+        console.log(window)
+
+        const board = new Board(20, '.app-board')
+        document.querySelector('.app-start').addEventListener('click', () => board.start())
+        document.querySelector('.app-stop').addEventListener('click', () => board.stop())
+        document.querySelector('.app-clear').addEventListener('click', () => board.clear())
+        document.querySelector('.app-step').addEventListener('click', () => board.update())
+        document.querySelector('.app-set-random').addEventListener('click', () => board.__state.forEach(row => row.forEach(cell => !Math.floor(Math.random() * 2) ? cell.paint() : cell.clear())))
+
+
+    </script>
+</body>
+
+</html>
