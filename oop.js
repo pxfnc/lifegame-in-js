@@ -63,7 +63,7 @@ var Board = class Board {
     }
 
     update() {
-        // 普通の平面での次の状態を求めるロジック
+
         const getNextState = (state, N) => (x, y) => {
 
             // const arroundLives = arroundLivesCount(x, y, state, N)
